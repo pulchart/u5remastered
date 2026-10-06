@@ -87,7 +87,10 @@ def load_files_directory(filename):
     with open(filename) as f:
         result = [line.split() for line in f]
         for l in result:
-          directory[l[0]] = l[1]
+          directory[" ".join(l[:-1])] = l[-1]
+    # the loader of some osi dumps is named "ultima v" instead of "meow"
+    if "0x41/meow" not in directory and "0x41/ultima v" in directory:
+        directory["0x41/meow"] = directory["0x41/ultima v"]
     return directory
  
 

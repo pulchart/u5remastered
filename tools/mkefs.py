@@ -157,7 +157,7 @@ def load_files_directory(filename):
         result = [line.split() for line in f]
         for l in result:
           #pprint.pprint(l)
-          directory[l[0]] = l[1]
+          directory[" ".join(l[:-1])] = l[-1]
     return directory
 
 
